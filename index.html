@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relay — Deploy Log</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Relay</div>
+    <div class="meta">
+      <span id="entry-count" class="entry-count"></span>
+      <button id="jump-latest" class="jump-btn" type="button">Jump to latest ↓</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <h1>Deploy history</h1>
+    <p>5,000 log lines across the last two weeks of deploys. Only the rows in view are
+      ever rendered — the log keeps growing and the page has to stay smooth, not just
+      correct once.</p>
+
+    <!-- Native scroll container. Its scrollHeight comes entirely from #log-spacer, so
+         the browser's own scroll clamping (and therefore how far the user or
+         "Jump to latest" can scroll) is only as accurate as the spacer's height. -->
+    <div id="log-viewport" class="log-viewport">
+      <div id="pinned-header" class="pinned-header"></div>
+      <div id="log-spacer" class="log-spacer">
+        <div id="log-window" class="log-window"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="virtual-list.js"></script>
+  <script src="data-source.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
